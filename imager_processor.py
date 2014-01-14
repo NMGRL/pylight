@@ -65,17 +65,18 @@ class ImageProcessor(HasTraits):
         return gc
 
     def traits_view(self):
+        sp=[os.path.join(os.path.dirname(__file__),'icons')]
         sa=Action(name='save',
                   action='do_save',
                   image=ImageResource(name='file_pdf.png',
-                                      search_path=[os.path.dirname(__file__)]))
+                                      search_path=sp))
         aa=Action(name='add band',action='do_add_band',
                   image=ImageResource(name='add.png',
-                                      search_path=[os.path.dirname(__file__)]))
+                                      search_path=sp))
 
         da = Action(name='delete band', action='do_delete_band',
                     image=ImageResource(name='delete.png',
-                                        search_path=[os.path.dirname(__file__)]))
+                                        search_path=sp))
 
         tb=ToolBar(sa,aa, da)
 
