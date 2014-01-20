@@ -1,4 +1,4 @@
-#!/Library/Frameworks/Python.framework/Versions/Current/bin/python
+#!/usr/local/bin/python
 #===============================================================================
 # Copyright 2012 Jake Ross
 #
@@ -25,15 +25,13 @@ from pyface.file_dialog import FileDialog
 from pyface.image_resource import ImageResource
 from traitsui.menu import Action
 from traits.api import HasTraits, Instance, File
-from traitsui.api import View, Item, Group, VGroup, UItem, ToolBar, MenuBar
+from traitsui.api import View, Item, Group, VGroup, UItem, ToolBar
 #============= standard library imports ========================
 import sys
 import os
-# from PIL import Image
-# from pychron.image.processing.bandwidth_highlighter import BandwidthHighlighter
 #============= local library imports  ==========================
 #============= enthought library imports =======================
-from bandwidth_highlighter import BandwidthHighlighter
+from src.bandwidth_highlighter import BandwidthHighlighter
 
 
 class ImageProcessor(HasTraits):
@@ -47,11 +45,9 @@ class ImageProcessor(HasTraits):
         self.highlighter.delete_band()
 
     def do_save(self):
-        path='/Users/ross/Sandbox/pylight_save.pdf'
-        if not path:
-            dlg = FileDialog(action='save as')
-            if dlg.open() == OK:
-                path = dlg.path
+        dlg = FileDialog(action='save as')
+        if dlg.open() == OK:
+            path = dlg.path
 
         if not path.endswith('.pdf'):
             path += '.pdf'
@@ -66,6 +62,7 @@ class ImageProcessor(HasTraits):
 
     def traits_view(self):
         sp=[os.path.join(os.path.dirname(__file__),'icons')]
+
         sa=Action(name='save',
                   action='do_save',
                   image=ImageResource(name='file_pdf.png',
@@ -107,7 +104,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         path = os.path.join(os.getcwd(), sys.argv[1])
         d.path = path
-    d.path = '/Users/ross/Sandbox/archive/images/R2-03 closeup_1_BSE_1_zoomed.png'
+    # d.path = '/Users/ross/Sandbox/archive/images/R2-03 closeup_1_BSE_1_zoomed.png'
     # d.path='/Users/argonlab2/Sandbox/R2-03 closeup_1_BSE_1 zoomed2.png'
     d.configure_traits()
 #============= EOF =============================================

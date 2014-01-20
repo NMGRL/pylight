@@ -1,4 +1,27 @@
-import Image
+#===============================================================================
+# Copyright 2014 Jake Ross
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#===============================================================================
+
+#============= enthought library imports =======================
+from traits.has_traits import HasTraits, on_trait_change
+from traits.trait_types import Instance, Str, List
+from traitsui.editors import ListEditor, InstanceEditor
+from traitsui.group import VGroup, VSplit
+from traitsui.item import UItem
+from traitsui.view import View
+
 from chaco.array_plot_data import ArrayPlotData
 from chaco.default_colormaps import color_map_name_dict
 from chaco.plot import Plot
@@ -6,18 +29,15 @@ from chaco.plot_containers import HPlotContainer
 from chaco.tools.better_selecting_zoom import BetterSelectingZoom as ZoomTool
 from chaco.tools.image_inspector_tool import ImageInspectorTool, ImageInspectorOverlay
 from chaco.tools.pan_tool import PanTool
+
 from enable.component import Component
 from enable.component_editor import ComponentEditor
-from numpy import array, where
-from traits.has_traits import HasTraits, on_trait_change
-from traits.trait_types import Instance, Str, Button, List
-from traitsui.editors import ListEditor, InstanceEditor
-from traitsui.group import VGroup, HGroup, VSplit
-from traitsui.item import UItem
-from traitsui.view import View
-from band import Band
 
-__author__ = 'ross'
+#============= standard library imports ========================
+from numpy import array, where
+#============= local library imports  ==========================
+from src.band import Band
+import Image
 
 
 class BandwidthHighlighter(HasTraits):
@@ -135,3 +155,5 @@ class BandwidthHighlighter(HasTraits):
 
     def _container_default(self):
         return self._container_factory()
+
+#============= EOF =============================================
