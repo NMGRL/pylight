@@ -7,8 +7,8 @@ Install
 ==========
 normal setuptools install
 
-..
-    : user$ cd pylight
-    :pylight user$ python setup install
-
+```
+    cd pylight
+    python setup install
+```
 
