@@ -2,7 +2,7 @@
 from distutils.core import setup
 
 setup(name='pyLight',
-      version='0.0',
+      version='0.1',
       description='BSE enhancement tool',
 
       author='Jake Ross',
